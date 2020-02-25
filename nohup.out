@@ -1,0 +1,183 @@
+Error: 
+Unable to load celery application.
+Module 'flower' has no attribute 'celery'
+
+[I 200225 16:50:42 command:136] Visit me at http://localhost:5555
+[I 200225 16:50:42 command:141] Broker: amqp://apabi:**@localhost:5672//
+[I 200225 16:50:42 command:144] Registered tasks: 
+    ['celery.accumulate',
+     'celery.backend_cleanup',
+     'celery.chain',
+     'celery.chord',
+     'celery.chord_unlock',
+     'celery.chunks',
+     'celery.group',
+     'celery.map',
+     'celery.starmap',
+     'tasks.analysis']
+[I 200225 16:50:42 mixins:229] Connected to amqp://apabi:**@127.0.0.1:5672//
+[W 200225 16:50:44 control:44] 'stats' inspect method failed
+[W 200225 16:50:44 control:44] 'active_queues' inspect method failed
+[W 200225 16:50:44 control:44] 'registered' inspect method failed
+[W 200225 16:50:44 control:44] 'scheduled' inspect method failed
+[W 200225 16:50:44 control:44] 'active' inspect method failed
+[W 200225 16:50:44 control:44] 'reserved' inspect method failed
+[W 200225 16:50:44 control:44] 'revoked' inspect method failed
+[W 200225 16:50:44 control:44] 'conf' inspect method failed
+[2020-02-25 16:50:50,706: ERROR/ForkPoolWorker-1] Task tasks.analysis[816892b0-08e4-499b-90a2-39cac7162385] raised unexpected: AttributeError("module 'urllib' has no attribute 'request'",)
+Traceback (most recent call last):
+  File "/home/lcong/anaconda3/lib/python3.6/site-packages/celery/app/trace.py", line 385, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/home/lcong/anaconda3/lib/python3.6/site-packages/celery/app/trace.py", line 650, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "/home/lcong/automl/celery-server/tasks.py", line 12, in analysis
+    status, pic_lists = down(obj.url, obj.type)
+  File "/home/lcong/automl/celery-server/core/utils.py", line 15, in down
+    request = urllib.request.Request(url)
+AttributeError: module 'urllib' has no attribute 'request'
+[2020-02-25 16:50:50,706: ERROR/ForkPoolWorker-15] Task tasks.analysis[b2d0323c-4ad7-45b3-b0f8-29d7e335a550] raised unexpected: AttributeError("module 'urllib' has no attribute 'request'",)
+Traceback (most recent call last):
+  File "/home/lcong/anaconda3/lib/python3.6/site-packages/celery/app/trace.py", line 385, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/home/lcong/anaconda3/lib/python3.6/site-packages/celery/app/trace.py", line 650, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "/home/lcong/automl/celery-server/tasks.py", line 12, in analysis
+    status, pic_lists = down(obj.url, obj.type)
+  File "/home/lcong/automl/celery-server/core/utils.py", line 15, in down
+    request = urllib.request.Request(url)
+AttributeError: module 'urllib' has no attribute 'request'
+[2020-02-25 16:50:50,711: ERROR/ForkPoolWorker-18] Task tasks.analysis[33c9dbb3-323a-470f-9890-6f3e9dc82555] raised unexpected: AttributeError("module 'urllib' has no attribute 'request'",)
+Traceback (most recent call last):
+  File "/home/lcong/anaconda3/lib/python3.6/site-packages/celery/app/trace.py", line 385, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/home/lcong/anaconda3/lib/python3.6/site-packages/celery/app/trace.py", line 650, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "/home/lcong/automl/celery-server/tasks.py", line 12, in analysis
+    status, pic_lists = down(obj.url, obj.type)
+  File "/home/lcong/automl/celery-server/core/utils.py", line 15, in down
+    request = urllib.request.Request(url)
+AttributeError: module 'urllib' has no attribute 'request'
+[2020-02-25 16:50:50,712: ERROR/ForkPoolWorker-4] Task tasks.analysis[77dea255-5436-4bf6-b991-06084687d321] raised unexpected: AttributeError("module 'urllib' has no attribute 'request'",)
+Traceback (most recent call last):
+  File "/home/lcong/anaconda3/lib/python3.6/site-packages/celery/app/trace.py", line 385, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/home/lcong/anaconda3/lib/python3.6/site-packages/celery/app/trace.py", line 650, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "/home/lcong/automl/celery-server/tasks.py", line 12, in analysis
+    status, pic_lists = down(obj.url, obj.type)
+  File "/home/lcong/automl/celery-server/core/utils.py", line 15, in down
+    request = urllib.request.Request(url)
+AttributeError: module 'urllib' has no attribute 'request'
+[2020-02-25 16:50:50,713: ERROR/ForkPoolWorker-16] Task tasks.analysis[f1508385-5861-4a98-8a82-fcbbd2e3d36d] raised unexpected: AttributeError("module 'urllib' has no attribute 'request'",)
+Traceback (most recent call last):
+  File "/home/lcong/anaconda3/lib/python3.6/site-packages/celery/app/trace.py", line 385, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/home/lcong/anaconda3/lib/python3.6/site-packages/celery/app/trace.py", line 650, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "/home/lcong/automl/celery-server/tasks.py", line 12, in analysis
+    status, pic_lists = down(obj.url, obj.type)
+  File "/home/lcong/automl/celery-server/core/utils.py", line 15, in down
+    request = urllib.request.Request(url)
+AttributeError: module 'urllib' has no attribute 'request'
+[2020-02-25 16:50:50,716: ERROR/ForkPoolWorker-19] Task tasks.analysis[1d528b4d-752c-4552-94a8-cc401feaf9db] raised unexpected: AttributeError("module 'urllib' has no attribute 'request'",)
+Traceback (most recent call last):
+  File "/home/lcong/anaconda3/lib/python3.6/site-packages/celery/app/trace.py", line 385, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/home/lcong/anaconda3/lib/python3.6/site-packages/celery/app/trace.py", line 650, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "/home/lcong/automl/celery-server/tasks.py", line 12, in analysis
+    status, pic_lists = down(obj.url, obj.type)
+  File "/home/lcong/automl/celery-server/core/utils.py", line 15, in down
+    request = urllib.request.Request(url)
+AttributeError: module 'urllib' has no attribute 'request'
+[2020-02-25 16:50:50,716: ERROR/ForkPoolWorker-3] Task tasks.analysis[c7b06468-5c38-4ab4-98ea-0c62e1880033] raised unexpected: AttributeError("module 'urllib' has no attribute 'request'",)
+Traceback (most recent call last):
+  File "/home/lcong/anaconda3/lib/python3.6/site-packages/celery/app/trace.py", line 385, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/home/lcong/anaconda3/lib/python3.6/site-packages/celery/app/trace.py", line 650, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "/home/lcong/automl/celery-server/tasks.py", line 12, in analysis
+    status, pic_lists = down(obj.url, obj.type)
+  File "/home/lcong/automl/celery-server/core/utils.py", line 15, in down
+    request = urllib.request.Request(url)
+AttributeError: module 'urllib' has no attribute 'request'
+[2020-02-25 16:50:50,719: ERROR/ForkPoolWorker-20] Task tasks.analysis[42c7432e-10fd-4b1c-98ae-2c4106db01a3] raised unexpected: AttributeError("module 'urllib' has no attribute 'request'",)
+Traceback (most recent call last):
+  File "/home/lcong/anaconda3/lib/python3.6/site-packages/celery/app/trace.py", line 385, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/home/lcong/anaconda3/lib/python3.6/site-packages/celery/app/trace.py", line 650, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "/home/lcong/automl/celery-server/tasks.py", line 12, in analysis
+    status, pic_lists = down(obj.url, obj.type)
+  File "/home/lcong/automl/celery-server/core/utils.py", line 15, in down
+    request = urllib.request.Request(url)
+AttributeError: module 'urllib' has no attribute 'request'
+[2020-02-25 16:50:50,721: ERROR/ForkPoolWorker-17] Task tasks.analysis[bc605200-75c5-4566-8cba-38194e6c1bf0] raised unexpected: AttributeError("module 'urllib' has no attribute 'request'",)
+Traceback (most recent call last):
+  File "/home/lcong/anaconda3/lib/python3.6/site-packages/celery/app/trace.py", line 385, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/home/lcong/anaconda3/lib/python3.6/site-packages/celery/app/trace.py", line 650, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "/home/lcong/automl/celery-server/tasks.py", line 12, in analysis
+    status, pic_lists = down(obj.url, obj.type)
+  File "/home/lcong/automl/celery-server/core/utils.py", line 15, in down
+    request = urllib.request.Request(url)
+AttributeError: module 'urllib' has no attribute 'request'
+[2020-02-25 16:50:50,722: ERROR/ForkPoolWorker-2] Task tasks.analysis[77c46e92-f37b-4843-8e05-e3dc74d6d450] raised unexpected: AttributeError("module 'urllib' has no attribute 'request'",)
+Traceback (most recent call last):
+  File "/home/lcong/anaconda3/lib/python3.6/site-packages/celery/app/trace.py", line 385, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/home/lcong/anaconda3/lib/python3.6/site-packages/celery/app/trace.py", line 650, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "/home/lcong/automl/celery-server/tasks.py", line 12, in analysis
+    status, pic_lists = down(obj.url, obj.type)
+  File "/home/lcong/automl/celery-server/core/utils.py", line 15, in down
+    request = urllib.request.Request(url)
+AttributeError: module 'urllib' has no attribute 'request'
+[I 200225 16:51:50 command:136] Visit me at http://localhost:5555
+[I 200225 16:51:50 command:141] Broker: amqp://apabi:**@localhost:5672//
+[I 200225 16:51:50 command:144] Registered tasks: 
+    ['celery.accumulate',
+     'celery.backend_cleanup',
+     'celery.chain',
+     'celery.chord',
+     'celery.chord_unlock',
+     'celery.chunks',
+     'celery.group',
+     'celery.map',
+     'celery.starmap',
+     'tasks.analysis']
+[I 200225 16:51:50 mixins:229] Connected to amqp://apabi:**@127.0.0.1:5672//
+[W 200225 16:51:52 control:44] 'stats' inspect method failed
+[W 200225 16:51:52 control:44] 'active_queues' inspect method failed
+[W 200225 16:51:52 control:44] 'registered' inspect method failed
+[W 200225 16:51:52 control:44] 'scheduled' inspect method failed
+[W 200225 16:51:52 control:44] 'active' inspect method failed
+[W 200225 16:51:52 control:44] 'reserved' inspect method failed
+[W 200225 16:51:52 control:44] 'revoked' inspect method failed
+[W 200225 16:51:52 control:44] 'conf' inspect method failed
+[W 200225 16:51:59 web:1587] 404 GET /task/f1508385-5861-4a98-8a82-fcbbd2e3d36d (10.254.111.13): Unknown task 'f1508385-5861-4a98-8a82-fcbbd2e3d36d'
+[W 200225 16:52:01 web:1587] 404 GET /task/f1508385-5861-4a98-8a82-fcbbd2e3d36d (10.254.111.13): Unknown task 'f1508385-5861-4a98-8a82-fcbbd2e3d36d'
+[E 200225 16:52:03 broker:82] RabbitMQ management API call failed: [Errno 111] Connection refused
+[I 200225 16:54:51 command:136] Visit me at http://localhost:5555
+[I 200225 16:54:51 command:141] Broker: amqp://apabi:**@localhost:5672//
+[I 200225 16:54:51 command:144] Registered tasks: 
+    ['celery.accumulate',
+     'celery.backend_cleanup',
+     'celery.chain',
+     'celery.chord',
+     'celery.chord_unlock',
+     'celery.chunks',
+     'celery.group',
+     'celery.map',
+     'celery.starmap',
+     'tasks.analysis']
+[I 200225 16:54:51 mixins:229] Connected to amqp://apabi:**@127.0.0.1:5672//
+[W 200225 16:54:53 control:44] 'stats' inspect method failed
+[W 200225 16:54:53 control:44] 'active_queues' inspect method failed
+[W 200225 16:54:53 control:44] 'registered' inspect method failed
+[W 200225 16:54:53 control:44] 'scheduled' inspect method failed
+[W 200225 16:54:53 control:44] 'active' inspect method failed
+[W 200225 16:54:53 control:44] 'reserved' inspect method failed
+[W 200225 16:54:53 control:44] 'revoked' inspect method failed
+[W 200225 16:54:53 control:44] 'conf' inspect method failed

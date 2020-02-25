@@ -2,12 +2,11 @@
 # -*- coding: utf-8 -*-
 """
 Created on Thu Oct  3 09:45:15 2019
-
 @author: nlp
 """
 import os
 import shutil
-import urllib
+import urllib.request
 from conf import config
 from pdf2image import convert_from_path
 
@@ -70,3 +69,4 @@ def clear_history_data():
     os.makedirs(config.PATH_PDF_CUT)
     os.makedirs(config.PATH_PDF_DOWN)
     os.makedirs(config.PATH_PIC_DOWN)
+    os.makedirs(config.PATH_TMP)
