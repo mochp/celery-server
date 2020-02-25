@@ -1,10 +1,10 @@
 
+class Input:
+    def __init__(self, json=None):
+        self.url = json["url"]
+        self.type = json["type"]
+        self.modelId = json["modelId"]
 
-class Inputs:
-    def __init__(self, jsons):
-        self.url = jsons["url"]
-        self.type = jsons["type"]
-        self.modelId = jsons["modelId"]
 
 
 class Output:
@@ -21,7 +21,7 @@ class Output:
         return out
 
 class ObjRespon:
-    def __init__(self,obj=obj,output=output):
+    def __init__(self,obj=None,output=None):
         self.obj = obj
         self.output = output
         self.json = self.obj2json()
@@ -32,7 +32,7 @@ class ObjRespon:
         return out
 
 class TotalObjRespon:
-    def __init__(self,ObjRespon=ObjRespon):
+    def __init__(self,ObjRespon=None):
         self.obj = ObjRespon
         self.json = self.obj2json()
 

@@ -1,3 +1,4 @@
+import json
 from conf import config
 from tasks import analysis
 
@@ -11,29 +12,35 @@ from core.obj import TotalObjRespon
 
 def check_input_json(jsons):
     #检查json格式
-    if not check_format_all():
+    if not check_format_all(jsons):
         #不通过直接返回错误信息
         return Output(status=config.STATUS_FAILTURE,info=config.INFO_WRONG_FORMAT).json
 
     result = []
-    for i, obj in enumerate(jsons):
+    for i, obj in enumerate(jsons["data"]):
         #检查obj格式
         if not check_obj_format(obj):
             output = Output(status=config.STATUS_FAILTURE,
                             info=config.INFO_WRONG_KEYS).json
-            result.append(ObjRespon(obj=obj, output=output))
+            result.append(ObjRespon(obj=obj, output=output).json)
             continue
         #检查modelid
         if not check_obj_modelId(obj):
             output = Output(status=config.STATUS_FAILTURE,
                             info=config.INFO_WRONG_MODELID).json
-            result.append(ObjRespon(obj=obj, output=output))
+            result.append(ObjRespon(obj=obj, output=output).json)
             continue
         #通过检查送进队列
-        token = analysis.s(obj)().id
+        token = analysis.delay(obj)
         output = Output(status=config.STATUS_SUCCESS,
                         info=config.INFO_RIGHT_FORMAT, token=token).json
-        result.append(ObjRespon(obj=obj, output=output))
+        result.append(ObjRespon(obj=obj, output=output).json)
 
     return TotalObjRespon(ObjRespon=result).json
 
+with open("conf/new.json","r") as f:
+    jsondata = json.load(f)
+
+# print(jsondata)
+res = check_input_json(jsondata)
+print(res)

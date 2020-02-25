@@ -28,27 +28,27 @@
         },
         {
             "type": "jpg",
-            "modelId": 500,
+            "modelId": 400,
             "url": "http://39.106.51.188:8010/download/pic_lian/017.jpg"
         },
         {
             "type": "jpg",
-            "modelId": 500,
+            "modelId": 400,
             "url": "http://39.106.51.188:8010/download/pic_lian/069.jpg"
         },
         {
             "type": "jpg",
-            "modelId": 500,
+            "modelId": 400,
             "url": "http://39.106.51.188:8010/download/pic_lian/088.jpg"
         },
         {
             "type": "jpg",
-            "modelId": 500,
+            "modelId": 400,
             "url": "http://39.106.51.188:8010/download/pic_lian/051.jpg"
         },
         {
             "type": "jpg",
-            "modelId": 600,
+            "modelId": 400,
             "url": "http://39.106.51.188:8010/download/pic_sifang/15791458186375706.jpg"
         }
     ]
