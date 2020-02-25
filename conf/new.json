@@ -1,0 +1,55 @@
+{
+    "time": "2020-02-20",
+    "data": [
+        {
+            "type": "jpg",
+            "modelId": 600,
+            "url": "http://39.106.51.188:8010/download/pic_sifang/1579248027928056.jpg"
+        },
+        {
+            "type": "pdf",
+            "modelId": 600,
+            "url": "http://39.106.51.188:8010/download/pdf_sifang/15791453438465877.pdf"
+        },
+        {
+            "type": "pdf",
+            "modelId": 600,
+            "url": "http://39.106.51.188:8010/download/pdf_sifang/15790566036406314.pdf"
+        },
+        {
+            "type": "pdf",
+            "modelId": 600,
+            "url": "http://39.106.51.188:8010/download/pdf_sifang/1579230136407715.pdf"
+        },
+        {
+            "type": "pdf",
+            "modelId": 600,
+            "url": "http://39.106.51.188:8010/download/pdf_sifang/15790548251802657.pdf"
+        },
+        {
+            "type": "jpg",
+            "modelId": 500,
+            "url": "http://39.106.51.188:8010/download/pic_lian/017.jpg"
+        },
+        {
+            "type": "jpg",
+            "modelId": 500,
+            "url": "http://39.106.51.188:8010/download/pic_lian/069.jpg"
+        },
+        {
+            "type": "jpg",
+            "modelId": 500,
+            "url": "http://39.106.51.188:8010/download/pic_lian/088.jpg"
+        },
+        {
+            "type": "jpg",
+            "modelId": 500,
+            "url": "http://39.106.51.188:8010/download/pic_lian/051.jpg"
+        },
+        {
+            "type": "jpg",
+            "modelId": 600,
+            "url": "http://39.106.51.188:8010/download/pic_sifang/15791458186375706.jpg"
+        }
+    ]
+}
