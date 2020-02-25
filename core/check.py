@@ -1,28 +1,31 @@
-import json
 
 
-def check_input_data(jsons):
-    new = {"data":[],"info":"right format"}
+def check_format_all(jsondata):
     try:
-        result = jsons
-        data = result["data"]
-        for _,obj in enumerate(data):
-            res = {"input": obj,
-                   "output": {"status": "success",
-                              "info": "",
-                              "token": ""}}
-            try:
-                assert obj["url"]
-                assert obj["modelId"]
-                assert obj["type"] in ["pdf","jpg"]
-            except Exception as e:
-                res["output"]["status"]="failure"
-                res["output"]["info"]=e
-            finally:
-                new["data"].append(res)
+        assert jsondata["data"]
+        status = True
     except Exception as e:
-        new["info"] = "wrong format"
-        return new
-    return new
+        status = False
+    finally:
+        return status
+
+
+def check_obj_format(obj):
+    try:
+        assert obj["url"]
+        assert obj["type"]
+        assert obj["modelId"]
+        status = True
+    except Exception as e:
+        status = False
+    return status
+
+def check_obj_modelId(obj):
+    try:
+        assert obj["modelId"] in [400,600]
+        status = True
+    except Exception as e:
+        status = False
+    return status
 
 

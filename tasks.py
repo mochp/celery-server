@@ -1,5 +1,5 @@
 import time
-from celeryproj import app
+from proj import app
 from core import utils
 from conf import config
 
@@ -12,7 +12,7 @@ def analysis(jsons):
     # step1 down
     status, pic_lists = utils.down(url, types)
     if status == 0:
-        return "error url"
+        return {"info":"error url"}
     # step2 yolo
     pic_cut_objs_lists = utils.yolo(modelId, pic_lists)
     # step3 ocr2word
