@@ -2,10 +2,11 @@ import time
 from proj import app
 from conf import config
 from core.obj import Input
+from core.obj import Over
 
 from core.utils import down
 from core.utils import pic2object
-from core.utils import ocr2word
+from core.utils import convert2word
 
 
 @app.task
@@ -18,5 +19,6 @@ def analysis(data):
     # step2 yolo
     pic_cut_objs_lists = pic2object(obj.modelId, pic_lists)
     # # step3 ocr2word
-    res_lists = ocr2word(pic_lists,pic_cut_objs_lists)
-    return pic_cut_objs_lists
+    res_lists = convert2word(obj.modelId,pic_lists,pic_cut_objs_lists)
+    
+    return Over(res_lists).json

@@ -49,4 +49,5 @@ print(res)
 # path = "/home/lcong/automl/data/downpic/072.jpg"
 
 # res = yolo_detec(modelId=400,path=path)
+
 # print(res)

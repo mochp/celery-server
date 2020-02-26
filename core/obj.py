@@ -41,3 +41,13 @@ class TotalObjRespon:
                "info": "right format"}
         return out
 
+
+class Over:
+    def __init__(self,result=None):
+        self.obj = result
+        self.json = self.obj2json()
+
+    def obj2json(self):
+        out = {"res": self.obj,
+               "info": "success"}
+        return out
