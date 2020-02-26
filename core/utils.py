@@ -8,6 +8,7 @@ import os
 import shutil
 import urllib.request
 from conf import config
+from core.rpc import yolo_detec
 from pdf2image import convert_from_path
 
 
@@ -29,7 +30,7 @@ def down(url, types):
                                 get_ext_name_from_path(url))
         with open(pic_path, "wb") as f:
             f.write(response.read())
-        pic_lists = [config.PATH_PIC_DOWN]
+        pic_lists = [pic_path]
 
     return True, pic_lists
 
@@ -50,8 +51,25 @@ def cutpdf(pdf_path):
             old = os.path.join(root, f)
             new = os.path.join(root, pdf_name + "-" + f.split("-")[-1])
             os.rename(old, new)
-            pic_lists.append({"path": new})
+            pic_lists.append(new)
     return pic_lists
+
+
+def pic2object(modelId, pic_lists):
+    pic_cut_objs_lists = []
+    for i, path in enumerate(pic_lists):
+        pic_cut_objs_lists.append(yolo_detec(modelId, path))
+    return pic_cut_objs_lists
+
+
+def ocr2word(pic_lists, pic_cut_objs_lists):
+    length = len(pic_lists)
+    assert len(pic_lists) == len(pic_cut_objs_lists)
+    for i in range(len(pic_lists)):
+        path = pic_lists[i]
+        objs = pic_cut_objs_lists[i]
+
+    return pic_cut_objs_lists
 
 
 def get_without_ext_name_from_path(url):

@@ -9,6 +9,7 @@ from core.check import check_obj_modelId
 from core.obj import Output
 from core.obj import ObjRespon
 from core.obj import TotalObjRespon
+from core.rpc import yolo_detec
 
 def check_input_json(jsons):
     #检查json格式
@@ -38,9 +39,14 @@ def check_input_json(jsons):
 
     return TotalObjRespon(ObjRespon=result).json
 
-with open("conf/new.json","r") as f:
+with open("conf/first.json","r") as f:
     jsondata = json.load(f)
 
-# print(jsondata)
+print(jsondata)
 res = check_input_json(jsondata)
 print(res)
+
+# path = "/home/lcong/automl/data/downpic/072.jpg"
+
+# res = yolo_detec(modelId=400,path=path)
+# print(res)

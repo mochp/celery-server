@@ -1,4 +1,5 @@
 
+LIAN_MODELID = 600
 
 STATUS_FAILTURE = "failture"
 STATUS_SUCCESS = "success"
