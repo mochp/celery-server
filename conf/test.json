@@ -1,0 +1,25 @@
+{
+    "time": "2020-02-20",
+    "data": [
+        {  
+            "type": "jpg",
+            "modelId": 400,
+            "url": "http://39.106.51.188:8010/download/pic_sifang/1579248027928056.jpg"
+        },
+        {
+            "type": "pdf",
+            "modelId": 400,
+            "url": "http://39.106.51.188:8010/download/pdf_sifang/15790558083968828.pdf"
+        },
+        {
+            "type": "pdf",
+            "modelId": 600,
+            "url": "http://39.106.51.188:8010/download/pdf_lian/1786.pdf"
+        },
+        {
+            "type": "pdf",
+            "modelId": 600,
+            "url": "http://39.106.51.188:8010/download/pdf_lian/1111-1114.pdf"
+        }
+    ]
+}
