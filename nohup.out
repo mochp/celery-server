@@ -1,6 +1,6 @@
-[I 200226 13:14:37 command:136] Visit me at http://localhost:5555
-[I 200226 13:14:37 command:141] Broker: amqp://apabi:**@localhost:5672//
-[I 200226 13:14:37 command:144] Registered tasks: 
+[I 200227 10:29:09 command:136] Visit me at http://localhost:5555
+[I 200227 10:29:09 command:141] Broker: amqp://guest:**@localhost:5672//
+[I 200227 10:29:09 command:144] Registered tasks: 
     ['celery.accumulate',
      'celery.backend_cleanup',
      'celery.chain',
@@ -11,12 +11,41 @@
      'celery.map',
      'celery.starmap',
      'tasks.analysis']
-[I 200226 13:14:37 mixins:229] Connected to amqp://apabi:**@127.0.0.1:5672//
-[W 200226 13:14:39 control:44] 'stats' inspect method failed
-[W 200226 13:14:39 control:44] 'active_queues' inspect method failed
-[W 200226 13:14:39 control:44] 'registered' inspect method failed
-[W 200226 13:14:39 control:44] 'scheduled' inspect method failed
-[W 200226 13:14:39 control:44] 'active' inspect method failed
-[W 200226 13:14:39 control:44] 'reserved' inspect method failed
-[W 200226 13:14:39 control:44] 'revoked' inspect method failed
-[W 200226 13:14:39 control:44] 'conf' inspect method failed
+[I 200227 10:29:09 mixins:229] Connected to amqp://guest:**@127.0.0.1:5672//
+[W 200227 10:29:11 control:44] 'stats' inspect method failed
+[W 200227 10:29:11 control:44] 'active_queues' inspect method failed
+[W 200227 10:29:11 control:44] 'registered' inspect method failed
+[W 200227 10:29:11 control:44] 'scheduled' inspect method failed
+[W 200227 10:29:11 control:44] 'active' inspect method failed
+[W 200227 10:29:11 control:44] 'reserved' inspect method failed
+[W 200227 10:29:11 control:44] 'revoked' inspect method failed
+[W 200227 10:29:11 control:44] 'conf' inspect method failed
+WARNING:tornado.access:404 GET /api/sessions?1582770556384 (127.0.0.1) 1.06ms
+WARNING:tornado.access:404 GET /api/kernelspecs?1582770567443 (127.0.0.1) 0.71ms
+WARNING:tornado.access:404 GET /api/sessions?1582770584034 (127.0.0.1) 0.90ms
+WARNING:tornado.access:404 GET /api/sessions?1582770598527 (127.0.0.1) 0.75ms
+WARNING:tornado.access:404 GET /api/sessions?1582770630243 (127.0.0.1) 0.83ms
+[I 200227 10:31:28 command:136] Visit me at http://localhost:5555
+[I 200227 10:31:28 command:141] Broker: amqp://guest:**@localhost:5672//
+[I 200227 10:31:28 command:144] Registered tasks: 
+    ['celery.accumulate',
+     'celery.backend_cleanup',
+     'celery.chain',
+     'celery.chord',
+     'celery.chord_unlock',
+     'celery.chunks',
+     'celery.group',
+     'celery.map',
+     'celery.starmap',
+     'tasks.analysis']
+[I 200227 10:31:28 mixins:229] Connected to amqp://guest:**@127.0.0.1:5672//
+[W 200227 10:31:30 control:44] 'stats' inspect method failed
+[W 200227 10:31:30 control:44] 'active_queues' inspect method failed
+[W 200227 10:31:30 control:44] 'registered' inspect method failed
+[W 200227 10:31:30 control:44] 'scheduled' inspect method failed
+[W 200227 10:31:30 control:44] 'active' inspect method failed
+[W 200227 10:31:30 control:44] 'reserved' inspect method failed
+[W 200227 10:31:30 control:44] 'revoked' inspect method failed
+[W 200227 10:31:30 control:44] 'conf' inspect method failed
+WARNING:tornado.access:404 GET /api/sessions?1582770707386 (127.0.0.1) 1.05ms
+WARNING:tornado.access:404 GET /api/sessions?1582770808105 (127.0.0.1) 0.74ms

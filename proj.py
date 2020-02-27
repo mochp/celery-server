@@ -1,8 +1,11 @@
 from __future__ import absolute_import, unicode_literals
 from celery import Celery
 
-app = Celery('tasks', broker="amqp://apabi:10NsS2mM@localhost:5672//",
-             backend="rpc://apabi:10NsS2mM@localhost:5672//")
+# app = Celery('tasks', broker="amqp://apabi:10NsS2mM@localhost:5672//",
+#              backend="rpc://")
+
+# app = Celery('tasks', backend='rpc://', broker='pyamqp://')
+app = Celery('tasks', backend='redis://localhost', broker='pyamqp://')
 
 # Optional configuration, see the application user guide
 app.conf.update(

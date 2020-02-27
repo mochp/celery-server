@@ -22,10 +22,10 @@
 
 ### 3、清除队列
 
-+ `rabbitmqctl list_queues`
-+ `rabbitmqctl stop_app`
-+ `rabbitmqctl reset`
-+ `rabbitmqctl start_app`
++ `sudo rabbitmqctl list_queues`
++ `sudo rabbitmqctl stop_app`
++ `sudo rabbitmqctl reset`
++ `sudo rabbitmqctl start_app`
 
 ### 4、设置账户
 + `sudo rabbitmqctl add_user apabi 10NsS2mM`

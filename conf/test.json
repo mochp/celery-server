@@ -20,6 +20,11 @@
             "type": "pdf",
             "modelId": 600,
             "url": "http://39.106.51.188:8010/download/pdf_lian/1111-1114.pdf"
+        },
+        {
+            "type": "jpg",
+            "modelId": 600,
+            "url": "http://39.106.51.188:8010/download/pic_lian/003.jpg"
         }
     ]
 }
