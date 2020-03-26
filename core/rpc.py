@@ -13,6 +13,9 @@ def yolo_detec(modelId=None, path=None):
     while True:
         res = requests.get(url, params=params)
         if res.ok:
+            if res.text=="wrong id": # error modelId
+                print("# error modelId")
+                return []
             return eval(res.text)
         elif init > retry:
             return []

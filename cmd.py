@@ -11,6 +11,7 @@ def command(cmd):
     elif cmd == "start":
         os.system("nohup celery -A tasks worker &")
         os.system("nohup celery -A tasks flower &")
+        os.system("nohup python service.py &")
 
     elif cmd == "stop":
         os.system("ps -ef | grep 'celery' |grep -v 'grep'|awk '{print $2}' | xargs kill -9")
@@ -18,6 +19,7 @@ def command(cmd):
 
     elif cmd == "restart":
         os.system("ps -ef | grep 'celery' |grep -v 'grep'|awk '{print $2}' | xargs kill -9")
+        os.system("ps -ef | grep 'python service.py' | grep -v 'grep'| awk '{print $2}' | xargs kill -9")
         time.sleep(1)
         os.system("nohup celery -A tasks worker &")
         os.system("nohup celery -A tasks flower &")

@@ -33,15 +33,16 @@ class ObjRespon:
 
 
 class Obj2Json:
-    def __init__(self, page = None,label=None, words=None, box=None):
+    def __init__(self, page=None, label=None, words=None, box=None):
         self.box = box
-        self.page = int(page)+1
+        self.page = int(page)
         self.label = label
         self.words = words
         self.json = self.obj2json()
 
     def obj2json(self):
         out = {"label": self.label,
+               "page": self.page,
                "words": self.words,
                "box": self.box}
         return out

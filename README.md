@@ -34,3 +34,8 @@
 
 ### 5、pdf2image安装
 + `pip install pdf2image`
+
+
+# 注意事项
+
++ 异步调用不能送入相同的pdf文件

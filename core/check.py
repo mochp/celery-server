@@ -1,4 +1,4 @@
-
+from core.sql import getMenuFeature
 
 def check_format_all(jsondata):
     try:
@@ -22,8 +22,10 @@ def check_obj_format(obj):
 
 
 def check_obj_modelId(obj):
+    if obj["modelId"] in [400, 500, 600]:
+        return True
     try:
-        assert obj["modelId"] in [400, 600]
+        getMenuFeature(obj["modelId"])
         status = True
     except Exception as e:
         status = False

@@ -12,10 +12,11 @@ from conf import config
 from core.rpc import yolo_detec
 from PIL import Image
 from core.obj import Target, Obj2Json
-from core.rpc import ocr2word
+from core.rpc import ocr2word,write2word
 from core.image import rotate_cut_img
 from pdf2image import convert_from_path
 from core.application import helper
+from core.sql import getTypeList
 
 from core.application.apply import Apply
 from core.application.captial import Captial
@@ -27,14 +28,14 @@ def down(url, types):
     request = urllib.request.Request(url)
     response = urllib.request.urlopen(request)
     if (response.getcode() != 200):
-        return False, []
+        return False, [],[]
 
     if types == "pdf":
         pdf_path = os.path.join(config.PATH_PDF_DOWN,
                                 get_ext_name_from_path(url))
         with open(pdf_path, "wb") as f:
             f.write(response.read())
-        pic_lists = cutpdf(pdf_path)
+        pic_lists, page_lists = cutpdf(pdf_path)
 
     else:
         pic_path = os.path.join(config.PATH_PIC_DOWN,
@@ -42,8 +43,19 @@ def down(url, types):
         with open(pic_path, "wb") as f:
             f.write(response.read())
         pic_lists = [pic_path]
+        page_lists = [1]
 
-    return True, pic_lists
+    return True, pic_lists, page_lists
+
+
+def down_without(path, types):
+    if types == "pdf":
+        pic_lists, page_lists = cutpdf(path)
+    else:
+        pic_lists = [path]
+        page_lists = [1]
+
+    return True, pic_lists, page_lists
 
 
 def cutpdf(pdf_path):
@@ -57,13 +69,16 @@ def cutpdf(pdf_path):
                       output_folder=cut_path)
     # 获取单页图片路径
     pic_lists = []
+    page_lists = []
     for root, dirs, files in os.walk(cut_path):
         for f in files:
+            page = os.path.splitext(f.split("-")[-1])[0]
             old = os.path.join(root, f)
             new = os.path.join(root, pdf_name + "-" + f.split("-")[-1])
             os.rename(old, new)
             pic_lists.append(new)
-    return pic_lists
+            page_lists.append(page)
+    return pic_lists, page_lists
 
 
 def pic2object(modelId, pic_lists):
@@ -73,17 +88,20 @@ def pic2object(modelId, pic_lists):
     return pic_cut_objs_lists
 
 
-def convert2word(modelId, pic_lists, pic_cut_objs_lists):
+
+
+def convert2word(modelId, pic_lists, page_lists, pic_cut_objs_lists):
     result = []
     length = len(pic_lists)
+    type_list =  getTypeList(modelId)
     assert len(pic_lists) == len(pic_cut_objs_lists)
     for i in range(len(pic_lists)):
         path = pic_lists[i]
         objs = pic_cut_objs_lists[i]
         if modelId == 600:
-            rec = parse_lian(i, path, objs)
+            rec = parse_lian(page_lists[i], path, objs)
         else:
-            rec = parse_usual(i, path, objs)
+            rec = parse_usual(page_lists[i], path, objs,type_list)
 
         result.append(rec)
     return result
@@ -97,12 +115,19 @@ def get_ext_name_from_path(url):
     return os.path.split(url)[-1]
 
 
-def parse_usual(page, path, objs):
+def parse_usual(page, path, objs,type_list):
     total = []
     for i, obj in enumerate(objs):
         target = Target(obj)
-        gen_cut_path = cut_box_of_pic(path,target.box)
-        words = ocr2word(gen_cut_path)
+        gen_cut_path = cut_box_of_pic(path, target.box)
+        if target.label :
+            words = ocr2word(gen_cut_path)
+        else:
+            if type_list[i]==2:  #手写体识别
+                words = write2word(gen_cut_path)
+            else:                #打印体识别
+                words = ocr2word(gen_cut_path)
+
         str_list = [x["words"] for x in words]
         obj_json = Obj2Json(label=target.label,
                             page=page,
@@ -124,15 +149,15 @@ def parse_lian(page, path, objs):
             words = ocr2word(path)
             res = Captial(words).res
         elif target.label == "idcard_head":
-            gen_cut_path = cut_box_of_pic(path,target.box)
+            gen_cut_path = cut_box_of_pic(path, target.box)
             words = ocr2word(gen_cut_path)
             res = Idcard(words).res
         elif target.label == "idcard_tail":
-            gen_cut_path = cut_box_of_pic(path,target.box)
+            gen_cut_path = cut_box_of_pic(path, target.box)
             words = ocr2word(gen_cut_path)
             res = Idback(words).res
         elif target.label == "police":
-            gen_cut_path = cut_box_of_pic(path,target.box)
+            gen_cut_path = cut_box_of_pic(path, target.box)
             words = ocr2word(gen_cut_path)
             res = Police(words).res
         elif target.label == "overdraw":
@@ -142,7 +167,7 @@ def parse_lian(page, path, objs):
             res = {}
             continue
 
-        if res!={}:
+        if res != {}:
             obj_json = Obj2Json(label=target.label,
                                 words=res,
                                 page=page,
@@ -150,12 +175,13 @@ def parse_lian(page, path, objs):
             total.append(obj_json.json)
     return total
 
-def cut_box_of_pic(path,box):
+
+def cut_box_of_pic(path, box):
     gen_cut_path = os.path.join(config.PATH_TMP, str(time.time()) + ".jpg")
     partImg, newbox = rotate_cut_img(Image.open(path),
-                                        box,
-                                        leftAdjustAlph=0.1,
-                                        rightAdjustAlph=0.1)
+                                     box,
+                                     leftAdjustAlph=0.1,
+                                     rightAdjustAlph=0.1)
 
     convert_cut_to_rgb(partImg, gen_cut_path)
     return gen_cut_path
